@@ -9,13 +9,20 @@ const calcRank =() => {
         equipmentsUsed: document.getElementById("equipments-used").value,
         lifepoints: document.getElementById("lifepoints").value,
         cardsUsed: document.getElementById("cards-used").value,
-        playedFacedown: document.getElementById("played-facedown").checked
+        facedownCards: document.getElementById("facedown-cards").value
     };
 
     const ranks = [
-        "SA-POW",
-        "SA-TEC",
-        "BCD"
+        "S-POW",
+		"A-POW",
+		"B-POW",
+		"C-POW",
+		"D-POW",
+        "S-TEC",
+        "A-TEC",
+        "B-TEC",
+        "C-TEC",
+        "D-TEC"
     ];
 
     let rankValue = 52;
@@ -145,16 +152,20 @@ const calcRank =() => {
         rankValue = rankValue + 6;
 
     // Facedowns
-    if(fields.playedFacedown)
+    if(fields.facedownCards > 0 && fields.facedownCards <= 10)
         rankValue = rankValue - 2;
+	
+	else if(fields.facedownCards > 0 && fields.facedownCards <= 20)
+        rankValue = rankValue - 4;
+	
+	else if(fields.facedownCards > 0 && fields.facedownCards <= 30)
+        rankValue = rankValue - 6;
+	
+	else if(fields.facedownCards > 30)
+        rankValue = rankValue - 8;
 
     
-    if(rankValue < 20)
-        rankName = ranks[1];
-    else if(rankValue >= 80)
-        rankName = ranks[0];
-    else
-        rankName = ranks[2];
+    rankName = ranks[Math.floor(rankValue/10)];
 
     return {
         value: rankValue,

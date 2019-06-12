@@ -17,14 +17,6 @@ input[type=number] {
     margin: 30px 0;
 
 	font-size: 0;
-
-    .form-label{
-        display: inline-block;
-
-        padding-bottom: 5px;
-
-        font-size: 12px;
-    }
     
 	.two-cols{
 		display: inline-block;
@@ -35,6 +27,10 @@ input[type=number] {
 
         .form-label{
             display: block;
+
+			padding-bottom: 5px;
+
+        	font-size: 12px;
         }
         
         > button{
@@ -57,13 +53,7 @@ input[type=number] {
 		}
 	}
 
-	.check{
-		margin-right: 5px;
-	}
-
     .form-foot{
-        padding-top: 30px;
-
         .rank{
             display: inline-block;
             vertical-align: top;

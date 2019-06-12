@@ -1,6 +1,6 @@
 @import "shared";
 
-@import url('https://fonts.googleapis.com/css?family=#{$opensans}:300,400,700');
+@import url('https://fonts.googleapis.com/css?family=#{$fontslug}:300,400,700&display=swap');
 @import url('https://fonts.googleapis.com/css?family=#{$icons}');
 
 $maincolor: $blue;
@@ -31,7 +31,7 @@ a{
     background: $white;
     
     font-size: 16px;
-    font-family: $opensans;
+    font-family: $fontname;
     color: $black;
     line-height: normal;
     
@@ -77,7 +77,7 @@ a{
     margin: 0;
     padding: 0;
 
-    font-family: $opensans;
+    font-family: $fontname;
 
     cursor: pointer;
 }
@@ -92,7 +92,7 @@ a{
     text-align: center;
     font-size: 16px;
     color: $white;
-    font-family: $opensans;
+    font-family: $fontname;
     line-height: 40px;
     
     margin: 0;
@@ -151,7 +151,7 @@ body{
     background: $maincolor;
     
     font-size: 12px;
-    font-family: $opensans;
+    font-family: $fontname;
     color: $black;
 }
 

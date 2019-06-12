@@ -64,36 +64,13 @@ class Input extends React.Component{
     }
 }
 
-class Checkbox extends React.Component{
-    handleChange = () => {
-        const rank = calcRank();
-        this.props.change(rank);
-    }
-
-    render(){
-        return(
-            <div>
-                <label>
-                    <input
-                        type="checkbox"
-                        id={this.props.name}
-                        name={this.props.name}
-                        className="check"
-                        onChange={this.handleChange} />
-                    <span className="form-label">{this.props.label}</span>
-                </label>
-            </div>
-        );
-    }
-}
-
 class App extends React.Component{
     constructor(props){
         super(props);
 
         this.state = {
             rank: {
-                name: "SA-POW",
+                name: "S-POW",
                 value: 99
             }
         };
@@ -107,7 +84,7 @@ class App extends React.Component{
         return (
             <div className={"container"}>
                 <form className={"tracker-form"}>
-                    <Input
+					<Input
                         label={"Turns"}
                         name={"turns"}
                         step={1}
@@ -173,7 +150,7 @@ class App extends React.Component{
                     <Input
                         label={"LP"}
                         name={"lifepoints"}
-                        step={50}
+                        step={10}
                         maxValue={8000}
                         initialValue={8000}
                         change={this.handleRank}
@@ -188,9 +165,12 @@ class App extends React.Component{
                         change={this.handleRank}
                     />
     
-                    <Checkbox
-                        label={"Played a card facedown"}
-                        name={"played-facedown"}
+                    <Input
+                        label={"Facedown cards"}
+                        name={"facedown-cards"}
+                        step={1}
+                        maxValue={99}
+                        initialValue={0}
                         change={this.handleRank}
                     />
     
