@@ -1,6 +1,7 @@
 import './App.scss';
 
 import React from 'react';
+import calcRank from './calcRank';
 
 class Input extends React.Component{
     constructor(props){
@@ -14,9 +15,23 @@ class Input extends React.Component{
     changeValue = (addValue) => {
         if((addValue < 0 && this.state.value > 0) || (addValue > 0 && this.state.value < this.props.maxValue)){
             this.setState((prevState) => ({
-                value: prevState.value + addValue
+                value: parseInt(prevState.value) + parseInt(addValue)
             }));
+
+            setTimeout(() => {
+                const rank = calcRank();
+                this.props.change(rank);
+            }, 1);
         }
+    }
+
+    handleChange = (e) => {
+        this.setState({
+            value: e.target.value
+        });
+
+        const rank = calcRank();
+        this.props.change(rank);
     }
 
     render(){
@@ -38,7 +53,7 @@ class Input extends React.Component{
                     className="input"
                     value={this.state.value}
                     step={this.props.step}
-                    onChange={(e) => {this.setState({value: e.target.value})}} />
+                    onChange={this.handleChange} />
                 
                 <button
                     type="button"
@@ -50,11 +65,21 @@ class Input extends React.Component{
 }
 
 class Checkbox extends React.Component{
+    handleChange = () => {
+        const rank = calcRank();
+        this.props.change(rank);
+    }
+
     render(){
         return(
             <div>
                 <label>
-                    <input type="checkbox" name={this.props.name} className="check" />
+                    <input
+                        type="checkbox"
+                        id={this.props.name}
+                        name={this.props.name}
+                        className="check"
+                        onChange={this.handleChange} />
                     <span className="form-label">{this.props.label}</span>
                 </label>
             </div>
@@ -62,90 +87,128 @@ class Checkbox extends React.Component{
     }
 }
 
-function App() {
-    return (
-        <div className={"container"}>
-            <form className={"tracker-form"}>
-                <Input
-                    label={"Turns"}
-                    name={"turns"}
-                    step={1}
-                    maxValue={99}
-                    initialValue={0}
-                />
+class App extends React.Component{
+    constructor(props){
+        super(props);
 
-                <Input
-                    label={"Fusions"}
-                    name={"fusions"}
-                    step={1}
-                    maxValue={99}
-                    initialValue={0}
-                />
+        this.state = {
+            rank: {
+                name: "SA-POW",
+                value: 99
+            }
+        };
+    }
 
-                <Input
-                    label={"Defensive wins"}
-                    name={"defensive-wins"}
-                    step={1}
-                    maxValue={99}
-                    initialValue={0}
-                />
+    handleRank = (rank) => {
+        this.setState({ rank: rank });
+    }
 
-                <Input
-                    label={"Effective attacks"}
-                    name={"effective-attacks"}
-                    step={1}
-                    maxValue={99}
-                    initialValue={0}
-                />
-
-                <Input
-                    label={"Traps activated"}
-                    name={"traps-activated"}
-                    step={1}
-                    maxValue={99}
-                    initialValue={0}
-                />
-
-                <Input
-                    label={"Pure magics used"}
-                    name={"magics-used"}
-                    step={1}
-                    maxValue={99}
-                    initialValue={0}
-                />
-
-                <Input
-                    label={"Equipments used"}
-                    name={"equipments-used"}
-                    step={1}
-                    maxValue={99}
-                    initialValue={0}
-                />
-
-                <Input
-                    label={"LP"}
-                    name={"lifepoints"}
-                    step={100}
-                    maxValue={8000}
-                    initialValue={8000}
-                />
-
-                <Checkbox
-                    label={"Played a card facedown"}
-                    name={"played-facedown"}
-                />
-
-                <Checkbox
-                    label={"Has 3 or less cards left in deck"}
-                    name={"cards-left"}
-                />
-
-                <div className="button-holder">
-                    <button type="button" className="button" onClick={() => { window.location.reload(); }}>Reset all</button>
-                </div>
-            </form>
-        </div>
-    );
+    render(){
+        return (
+            <div className={"container"}>
+                <form className={"tracker-form"}>
+                    <Input
+                        label={"Turns"}
+                        name={"turns"}
+                        step={1}
+                        maxValue={99}
+                        initialValue={0}
+                        change={this.handleRank}
+                    />
+    
+                    <Input
+                        label={"Fusions"}
+                        name={"fusions"}
+                        step={1}
+                        maxValue={99}
+                        initialValue={0}
+                        change={this.handleRank}
+                    />
+    
+                    <Input
+                        label={"Effective attacks"}
+                        name={"effective-attacks"}
+                        step={1}
+                        maxValue={99}
+                        initialValue={0}
+                        change={this.handleRank}
+                    />
+    
+                    <Input
+                        label={"Defensive wins"}
+                        name={"defensive-wins"}
+                        step={1}
+                        maxValue={99}
+                        initialValue={0}
+                        change={this.handleRank}
+                    />
+    
+                    <Input
+                        label={"Pure magics used"}
+                        name={"magics-used"}
+                        step={1}
+                        maxValue={99}
+                        initialValue={0}
+                        change={this.handleRank}
+                    />
+    
+                    <Input
+                        label={"Equipments used"}
+                        name={"equipments-used"}
+                        step={1}
+                        maxValue={99}
+                        initialValue={0}
+                        change={this.handleRank}
+                    />
+    
+                    <Input
+                        label={"Traps activated"}
+                        name={"traps-activated"}
+                        step={1}
+                        maxValue={99}
+                        initialValue={0}
+                        change={this.handleRank}
+                    />
+    
+                    <Input
+                        label={"LP"}
+                        name={"lifepoints"}
+                        step={50}
+                        maxValue={8000}
+                        initialValue={8000}
+                        change={this.handleRank}
+                    />
+    
+                    <Input
+                        label={"Cards used"}
+                        name={"cards-used"}
+                        step={1}
+                        maxValue={40}
+                        initialValue={0}
+                        change={this.handleRank}
+                    />
+    
+                    <Checkbox
+                        label={"Played a card facedown"}
+                        name={"played-facedown"}
+                        change={this.handleRank}
+                    />
+    
+                    <div className={"form-foot"}>
+                        <div className={"rank"}>Rank: {this.state.rank.value} / {this.state.rank.name}</div>
+    
+                        <div className={"button-holder"}>
+                            <button
+                                type={"button"}
+                                className={"button"}
+                                onClick={() => { window.location.reload(); }}
+                            >Reset all</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        );
+    }
 }
 
 export default App;
