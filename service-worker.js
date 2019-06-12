@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/fm-atec-tracker/precache-manifest.20153f6b367c8e468713aea2943cd45e.js"
+  "/fm-atec-tracker/precache-manifest.24661ce53ee33e8bf1ef4fd4ce024939.js"
 );
 
 self.addEventListener('message', (event) => {
