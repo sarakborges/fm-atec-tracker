@@ -1,0 +1,162 @@
+@import "shared";
+
+@import url('https://fonts.googleapis.com/css?family=#{$opensans}:300,400,700');
+@import url('https://fonts.googleapis.com/css?family=#{$icons}');
+
+$maincolor: $blue;
+
+*{
+    box-sizing: border-box;
+    line-height: 100%;
+
+    vertical-align: top;
+}
+*:focus,
+*:active{
+    outline: none;
+}
+*::-moz-focus-inner{
+    border: 0;
+}
+
+a{
+    text-decoration: none;
+}
+
+.input{
+    width: 100%;
+    height: 40px;
+    
+    border: 1px solid $grey;
+    background: $white;
+    
+    font-size: 16px;
+    font-family: $opensans;
+    color: $black;
+    line-height: normal;
+    
+    padding: 0 7px;
+    
+    transition: .3s;
+}
+.input:focus{
+    border-color: $maincolor;
+}
+
+.input.select{
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -o-appearance: none;
+    cursor: pointer;
+    text-indent: 0.01px;
+    text-overflow: "";
+    
+    padding: 0 7px;
+    
+    background: $white;
+}
+.input.select option{
+    padding: 10px;
+}
+.input.textarea{
+    resize: none;
+    padding: 7px 10px;
+    height: 100px;
+}
+.check, .radio{
+    display: inline-block;
+    vertical-align: middle;
+
+    margin: 0;
+}
+
+.clear_button{
+    border: 0;
+    background: transparent;
+
+    margin: 0;
+    padding: 0;
+
+    font-family: $opensans;
+
+    cursor: pointer;
+}
+.button{
+    height: 40px;
+    width: auto;
+    
+    cursor: pointer;
+    
+    display: inline-block;
+    
+    text-align: center;
+    font-size: 16px;
+    color: $white;
+    font-family: $opensans;
+    line-height: 40px;
+    
+    margin: 0;
+    padding: 0 15px;
+    
+    border: 0;
+    background: $maincolor;
+    
+    transition: .3s background;
+    
+    &.canceloption{
+        background: $lightgrey;
+    }
+}
+.button:disabled,
+.button:hover:disabled{
+    background: $lightgrey;
+    cursor: default;
+}
+.button:hover{
+    background: lighten($maincolor, 10%);
+    
+    &.canceloption{
+        background: lighten($lightgrey, 10%);
+    }
+}
+ul, dl, li, dd, dt, p{
+    margin: 0;
+    padding: 0;
+}
+li, dd{
+    display: block;
+}
+pre{
+    font-size: 14px;
+    
+    border: 1px solid $lightgrey;
+    padding: 25px;
+    margin: 25px;
+    
+    background: $white;
+}
+i{
+    font-style: normal;
+}
+
+h1, h2, h3{
+    margin: 0;
+}
+
+
+body{
+    padding: 0;
+    margin: 0;
+    
+    background: $maincolor;
+    
+    font-size: 12px;
+    font-family: $opensans;
+    color: $black;
+}
+
+.container{
+    width: 290px;
+    
+    margin: auto;
+}
