@@ -1,17 +1,4 @@
-const calcRank =() => {
-    const fields = {
-        turns: document.getElementById("turns").value,
-        fusions: document.getElementById("fusions").value,
-        defensiveWins: document.getElementById("defensive-wins").value,
-        effectiveAttacks: document.getElementById("effective-attacks").value,
-        trapsActivated: document.getElementById("traps-activated").value,
-        magicsUsed: document.getElementById("magics-used").value,
-        equipmentsUsed: document.getElementById("equipments-used").value,
-        lifepoints: document.getElementById("lifepoints").value,
-        cardsUsed: document.getElementById("cards-used").value,
-        facedownCards: document.getElementById("facedown-cards").value
-    };
-
+const calcRank = (fields) => {
     const ranks = [
         "S-TEC",
         "A-TEC",
