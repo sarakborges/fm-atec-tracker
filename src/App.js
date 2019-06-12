@@ -71,7 +71,8 @@ class App extends React.Component{
         this.state = {
             rank: {
                 name: "S-POW",
-                value: 99
+                value: 99,
+				class: "pow"
             }
         };
     }
@@ -175,7 +176,9 @@ class App extends React.Component{
                     />
     
                     <div className={"form-foot"}>
-                        <div className={"rank"}>Rank: {this.state.rank.value} / {this.state.rank.name}</div>
+                        <div className={"rank"}>
+							Rank: {this.state.rank.value} / <span className={this.state.rank.class}>{this.state.rank.name}</span>
+						</div>
     
                         <div className={"button-holder"}>
                             <button

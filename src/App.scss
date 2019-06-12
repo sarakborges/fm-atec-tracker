@@ -62,6 +62,19 @@ input[type=number] {
 
             font-size: 12px;
             text-transform: uppercase;
+
+			span{
+				font-weight: 700;
+				color: $green;
+
+				&.pow{
+					color: $red;
+				}
+
+				&.tech{
+					color: $blue;
+				}
+			}
         }
 
         .button-holder{

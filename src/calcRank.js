@@ -13,16 +13,16 @@ const calcRank =() => {
     };
 
     const ranks = [
-        "S-POW",
-		"A-POW",
-		"B-POW",
-		"C-POW",
-		"D-POW",
         "S-TEC",
         "A-TEC",
         "B-TEC",
         "C-TEC",
-        "D-TEC"
+        "D-TEC",
+		"D-POW",
+		"C-POW",
+		"B-POW",
+		"A-POW",
+		"S-POW"
     ];
 
     let rankValue = 52;
@@ -167,9 +167,16 @@ const calcRank =() => {
     
     rankName = ranks[Math.floor(rankValue/10)];
 
+	let rankClass = "";
+	if(rankValue < 20)
+		rankClass = "tech";
+	else if(rankValue >= 80)
+		rankClass = "pow";
+
     return {
         value: rankValue,
-        name: rankName
+        name: rankName,
+		class: rankClass
     };
 }
 
