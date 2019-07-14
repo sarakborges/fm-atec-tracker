@@ -17,7 +17,7 @@ const calcRank = (fields) => {
 
     // Turns
     if(fields.turns <= 4)
-        rankValue = rankValue + 10;
+        rankValue = rankValue + 12;
     
     else if(fields.turns <= 8)
         rankValue = rankValue + 8;
