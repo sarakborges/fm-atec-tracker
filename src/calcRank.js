@@ -42,16 +42,16 @@ const calcRank = (fields) => {
         rankValue = rankValue - 12;
 
     // Defensive wins
-    if(fields.defensiveWins >= 3 && fields.defensiveWins <= 6)
+    if(fields.defensiveWins >= 2 && fields.defensiveWins <= 5)
         rankValue = rankValue - 10;
 
-    else if(fields.defensiveWins >= 3 && fields.defensiveWins <= 10)
+    else if(fields.defensiveWins >= 2 && fields.defensiveWins <= 9)
         rankValue = rankValue - 20;
 
-    else if(fields.defensiveWins >= 3 && fields.defensiveWins <= 15)
+    else if(fields.defensiveWins >= 2 && fields.defensiveWins <= 14)
         rankValue = rankValue - 30;
 
-    else if(fields.defensiveWins >= 3 && fields.defensiveWins >= 16)
+    else if(fields.defensiveWins >= 2 && fields.defensiveWins >= 15)
         rankValue = rankValue - 40;
 
     // Effective attacks
